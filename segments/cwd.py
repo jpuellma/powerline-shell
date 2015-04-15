@@ -18,8 +18,14 @@ def add_cwd_segment():
     names = get_short_path(cwd.decode('utf-8'))
 
     max_depth = powerline.args.cwd_max_depth
-    if len(names) > max_depth:
-        names = names[:2] + [u'\u2026'] + names[2 - max_depth:]
+    namelen = len(names)
+    if namelen > max_depth:
+        if max_depth == 1:
+            names = names[namelen - max_depth:]
+        elif max_depth == 2:
+            names = [u'\u2026'] + names[namelen - max_depth:]
+        else:
+            names = names[:2] + [u'\u2026'] + names[2 - max_depth:]
 
     if not powerline.args.cwd_only:
         for n in names[:-1]:
