@@ -16,6 +16,6 @@ def add_hostname_segment(powerline):
             host_prompt = ' %m '
         else:
             import socket
-            host_prompt = ' %s ' % socket.gethostname().split('.')[0]
+            host_prompt = ' %s' % socket.gethostname().split('.')[0]
 
         powerline.append(host_prompt, Color.HOSTNAME_FG, Color.HOSTNAME_BG)
